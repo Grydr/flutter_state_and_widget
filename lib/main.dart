@@ -26,9 +26,6 @@ class RowColumnPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
-    double screenWidth = mediaQueryData.size.width;
-    double screenHeight = mediaQueryData.size.height;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -38,12 +35,12 @@ class RowColumnPage extends StatelessWidget {
         backgroundColor: Colors.orange[200],
         centerTitle: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            child: AspectRatio(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            AspectRatio(
               aspectRatio: 1.0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -59,31 +56,31 @@ class RowColumnPage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 10.0),
-            padding: EdgeInsets.all(20.0),
-            color: Colors.pink[200],
-            child: Text('What image is that', style: TextStyle(fontSize: 16)),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            color: Colors.yellow[200],
-            padding: EdgeInsets.all(20.0),
-            margin: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Column(children: [Icon(Icons.food_bank), Text("Food")]),
-                Column(children: [Icon(Icons.landscape), Text("Scenery")]),
-                Column(children: [Icon(Icons.people), Text("People")]),
-              ],
+            Container(
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 10.0),
+              padding: EdgeInsets.all(20.0),
+              color: Colors.pink[200],
+              child: Text('What image is that', style: TextStyle(fontSize: 16)),
             ),
-          ),
-          CounterCard(),
-        ],
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: Colors.yellow[200],
+              padding: EdgeInsets.all(20.0),
+              margin: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Column(children: [Icon(Icons.food_bank), Text("Food")]),
+                  Column(children: [Icon(Icons.landscape), Text("Scenery")]),
+                  Column(children: [Icon(Icons.people), Text("People")]),
+                ],
+              ),
+            ),
+            CounterCard(),
+          ],
+        ),
       ),
     );
   }
